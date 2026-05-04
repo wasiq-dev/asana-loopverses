@@ -18,6 +18,7 @@ import Clients from "./pages/Clients";
 import Activity from "./pages/Activity";
 import Admin from "./pages/Admin";
 import Assistant from "./pages/Assistant";
+import Messages from "./pages/Messages";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
