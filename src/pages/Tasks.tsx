@@ -12,6 +12,8 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Plus, Search } from "lucide-react";
 import { toast } from "sonner";
 import { format } from "date-fns";
+import { TaskDetailDialog } from "@/components/TaskDetailDialog";
+import { useSearchParams } from "react-router-dom";
 
 const PRIORITY_STYLES: Record<string, string> = {
   low: "bg-muted text-muted-foreground",
