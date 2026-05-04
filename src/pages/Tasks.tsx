@@ -36,6 +36,10 @@ export default function Tasks() {
   const [search, setSearch] = useState("");
   const [open, setOpen] = useState(false);
   const [form, setForm] = useState({ title: "", description: "", project_id: "", assignee_id: "", priority: "medium", due_date: "" });
+  const [searchParams, setSearchParams] = useSearchParams();
+  const activeTaskId = searchParams.get("task");
+  const closeDetail = () => { searchParams.delete("task"); setSearchParams(searchParams); };
+  const openDetail = (id: string) => { searchParams.set("task", id); setSearchParams(searchParams); };
 
   const load = async () => {
     const [{ data: t }, { data: p }, { data: pf }] = await Promise.all([
