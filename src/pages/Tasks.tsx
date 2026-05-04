@@ -189,6 +189,7 @@ export default function Tasks() {
           );
         })}
       </div>
+      <TaskDetailDialog taskId={activeTaskId} onClose={closeDetail} profiles={profiles} />
     </div>
   );
 }
