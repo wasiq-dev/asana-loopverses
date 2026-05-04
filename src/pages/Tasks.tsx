@@ -12,6 +12,8 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Plus, Search } from "lucide-react";
 import { toast } from "sonner";
 import { format } from "date-fns";
+import { TaskDetailDialog } from "@/components/TaskDetailDialog";
+import { useSearchParams } from "react-router-dom";
 
 const PRIORITY_STYLES: Record<string, string> = {
   low: "bg-muted text-muted-foreground",
@@ -34,6 +36,10 @@ export default function Tasks() {
   const [search, setSearch] = useState("");
   const [open, setOpen] = useState(false);
   const [form, setForm] = useState({ title: "", description: "", project_id: "", assignee_id: "", priority: "medium", due_date: "" });
+  const [searchParams, setSearchParams] = useSearchParams();
+  const activeTaskId = searchParams.get("task");
+  const closeDetail = () => { searchParams.delete("task"); setSearchParams(searchParams); };
+  const openDetail = (id: string) => { searchParams.set("task", id); setSearchParams(searchParams); };
 
   const load = async () => {
     const [{ data: t }, { data: p }, { data: pf }] = await Promise.all([
@@ -148,7 +154,7 @@ export default function Tasks() {
                   const initials = (assignee?.full_name || assignee?.email || "?").slice(0, 2).toUpperCase();
                   const canEdit = role === "admin" || t.assignee_id === user?.id || t.created_by === user?.id;
                   return (
-                    <div key={t.id} className="bg-card rounded-xl p-3 border border-border hover:border-primary/40 transition-colors">
+                    <div key={t.id} onClick={() => openDetail(t.id)} className="bg-card rounded-xl p-3 border border-border hover:border-primary/40 transition-colors cursor-pointer">
                       <div className="flex items-start justify-between gap-2">
                         <h4 className="text-sm font-medium leading-snug">{t.title}</h4>
                         <Badge variant="outline" className={`text-[10px] ${PRIORITY_STYLES[t.priority]}`}>{t.priority}</Badge>
@@ -162,14 +168,16 @@ export default function Tasks() {
                           {t.due_date && <span className="text-[10px] font-mono text-muted-foreground">{format(new Date(t.due_date), "MMM d")}</span>}
                         </div>
                         {canEdit && (
-                          <Select value={t.status} onValueChange={v => updateStatus(t.id, v)}>
-                            <SelectTrigger className="h-7 text-xs w-28"><SelectValue /></SelectTrigger>
-                            <SelectContent>
-                              <SelectItem value="todo">To do</SelectItem>
-                              <SelectItem value="in_progress">In progress</SelectItem>
-                              <SelectItem value="completed">Completed</SelectItem>
-                            </SelectContent>
-                          </Select>
+                          <div onClick={e => e.stopPropagation()}>
+                            <Select value={t.status} onValueChange={v => updateStatus(t.id, v)}>
+                              <SelectTrigger className="h-7 text-xs w-28"><SelectValue /></SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="todo">To do</SelectItem>
+                                <SelectItem value="in_progress">In progress</SelectItem>
+                                <SelectItem value="completed">Completed</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
                         )}
                       </div>
                     </div>
@@ -181,6 +189,7 @@ export default function Tasks() {
           );
         })}
       </div>
+      <TaskDetailDialog taskId={activeTaskId} onClose={closeDetail} profiles={profiles} />
     </div>
   );
 }

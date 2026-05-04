@@ -8,6 +8,7 @@ import { Moon, Sun, LogOut, User as UserIcon } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
+import { NotificationBell } from "./NotificationBell";
 
 export function AppLayout({ children }: { children: ReactNode }) {
   const { theme, toggle } = useTheme();
@@ -36,6 +37,7 @@ export function AppLayout({ children }: { children: ReactNode }) {
               <SidebarTrigger />
             </div>
             <div className="flex items-center gap-2">
+              <NotificationBell />
               <Button variant="ghost" size="icon" onClick={toggle} className="h-9 w-9">
                 {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
               </Button>

@@ -3,7 +3,7 @@ import {
   Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel,
   SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar, SidebarHeader, SidebarFooter,
 } from "@/components/ui/sidebar";
-import { LayoutDashboard, FolderKanban, CheckSquare, Users, Building2, Activity, Shield, Bot } from "lucide-react";
+import { LayoutDashboard, FolderKanban, CheckSquare, Users, Building2, Activity, Shield, Bot, MessageSquare } from "lucide-react";
 import logo from "@/assets/loopverses-logo.png";
 import { useAuth } from "@/contexts/AuthContext";
 
@@ -11,6 +11,7 @@ const mainItems = [
   { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
   { title: "Projects", url: "/projects", icon: FolderKanban },
   { title: "Tasks", url: "/tasks", icon: CheckSquare },
+  { title: "Messages", url: "/messages", icon: MessageSquare },
   { title: "Teams", url: "/teams", icon: Users },
   { title: "Clients", url: "/clients", icon: Building2 },
   { title: "Activity", url: "/activity", icon: Activity },
