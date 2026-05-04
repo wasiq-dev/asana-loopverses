@@ -1,6 +1,7 @@
 import { Link, Navigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Sparkles, ArrowRight, BarChart3, Users, Zap, Shield } from "lucide-react";
+import { ArrowRight, BarChart3, Users, Zap, Shield } from "lucide-react";
+import logo from "@/assets/loopverses-logo.png";
 import { useAuth } from "@/contexts/AuthContext";
 
 const FEATURES = [
@@ -21,10 +22,10 @@ export default function Landing() {
 
       <header className="relative z-10 max-w-7xl mx-auto flex items-center justify-between p-6">
         <div className="flex items-center gap-2">
-          <div className="h-9 w-9 rounded-xl bg-gradient-primary flex items-center justify-center glow-primary">
-            <Sparkles className="h-4 w-4 text-primary-foreground" />
+          <div className="h-10 w-10 rounded-xl bg-gradient-primary flex items-center justify-center glow-primary overflow-hidden">
+            <img src={logo} alt="Loopverses" className="h-7 w-7 object-contain" />
           </div>
-          <span className="font-display font-bold text-xl text-gradient">Nebula</span>
+          <span className="font-display font-bold text-xl text-gradient">Loopverses</span>
         </div>
         <Button asChild variant="outline" className="glass"><Link to="/auth">Sign in</Link></Button>
       </header>

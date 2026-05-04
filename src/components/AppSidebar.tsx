@@ -3,7 +3,8 @@ import {
   Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel,
   SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar, SidebarHeader, SidebarFooter,
 } from "@/components/ui/sidebar";
-import { LayoutDashboard, FolderKanban, CheckSquare, Users, Building2, Activity, Shield, Sparkles } from "lucide-react";
+import { LayoutDashboard, FolderKanban, CheckSquare, Users, Building2, Activity, Shield, Bot } from "lucide-react";
+import logo from "@/assets/loopverses-logo.png";
 import { useAuth } from "@/contexts/AuthContext";
 
 const mainItems = [
@@ -13,6 +14,7 @@ const mainItems = [
   { title: "Teams", url: "/teams", icon: Users },
   { title: "Clients", url: "/clients", icon: Building2 },
   { title: "Activity", url: "/activity", icon: Activity },
+  { title: "AI Assistant", url: "/assistant", icon: Bot },
 ];
 
 export function AppSidebar() {
@@ -26,10 +28,10 @@ export function AppSidebar() {
     <Sidebar collapsible="icon" className="border-r border-sidebar-border">
       <SidebarHeader className="p-4">
         <div className="flex items-center gap-2">
-          <div className="h-8 w-8 rounded-lg bg-gradient-primary flex items-center justify-center shrink-0 glow-primary">
-            <Sparkles className="h-4 w-4 text-primary-foreground" />
+          <div className="h-8 w-8 rounded-lg bg-gradient-primary flex items-center justify-center shrink-0 glow-primary overflow-hidden">
+            <img src={logo} alt="Loopverses" className="h-6 w-6 object-contain" />
           </div>
-          {!collapsed && <span className="font-display font-bold text-lg text-gradient">Nebula</span>}
+          {!collapsed && <span className="font-display font-bold text-lg text-gradient">Loopverses</span>}
         </div>
       </SidebarHeader>
 
