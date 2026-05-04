@@ -154,7 +154,7 @@ export default function Tasks() {
                   const initials = (assignee?.full_name || assignee?.email || "?").slice(0, 2).toUpperCase();
                   const canEdit = role === "admin" || t.assignee_id === user?.id || t.created_by === user?.id;
                   return (
-                    <div key={t.id} className="bg-card rounded-xl p-3 border border-border hover:border-primary/40 transition-colors">
+                    <div key={t.id} onClick={() => openDetail(t.id)} className="bg-card rounded-xl p-3 border border-border hover:border-primary/40 transition-colors cursor-pointer">
                       <div className="flex items-start justify-between gap-2">
                         <h4 className="text-sm font-medium leading-snug">{t.title}</h4>
                         <Badge variant="outline" className={`text-[10px] ${PRIORITY_STYLES[t.priority]}`}>{t.priority}</Badge>
