@@ -168,14 +168,16 @@ export default function Tasks() {
                           {t.due_date && <span className="text-[10px] font-mono text-muted-foreground">{format(new Date(t.due_date), "MMM d")}</span>}
                         </div>
                         {canEdit && (
-                          <Select value={t.status} onValueChange={v => updateStatus(t.id, v)}>
-                            <SelectTrigger className="h-7 text-xs w-28"><SelectValue /></SelectTrigger>
-                            <SelectContent>
-                              <SelectItem value="todo">To do</SelectItem>
-                              <SelectItem value="in_progress">In progress</SelectItem>
-                              <SelectItem value="completed">Completed</SelectItem>
-                            </SelectContent>
-                          </Select>
+                          <div onClick={e => e.stopPropagation()}>
+                            <Select value={t.status} onValueChange={v => updateStatus(t.id, v)}>
+                              <SelectTrigger className="h-7 text-xs w-28"><SelectValue /></SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="todo">To do</SelectItem>
+                                <SelectItem value="in_progress">In progress</SelectItem>
+                                <SelectItem value="completed">Completed</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
                         )}
                       </div>
                     </div>
