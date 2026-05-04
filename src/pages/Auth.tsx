@@ -9,7 +9,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
-import { Loader2, Sparkles } from "lucide-react";
+import { Loader2 } from "lucide-react";
+import logo from "@/assets/loopverses-logo.png";
 
 const emailSchema = z.string().trim().email("Invalid email").max(255);
 const passwordSchema = z.string().min(8, "Min 8 characters").max(72);
@@ -85,11 +86,11 @@ export default function Auth() {
       <div className="relative w-full max-w-md animate-in-up">
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 mb-4">
-            <div className="h-12 w-12 rounded-2xl bg-gradient-primary flex items-center justify-center glow-primary animate-pulse-glow">
-              <Sparkles className="h-6 w-6 text-primary-foreground" />
+            <div className="h-16 w-16 rounded-2xl bg-gradient-primary flex items-center justify-center glow-primary animate-pulse-glow overflow-hidden">
+              <img src={logo} alt="Loopverses" className="h-12 w-12 object-contain" />
             </div>
           </div>
-          <h1 className="font-display text-4xl font-bold text-gradient">Nebula</h1>
+          <h1 className="font-display text-4xl font-bold text-gradient">Loopverses</h1>
           <p className="text-muted-foreground mt-2 text-sm">Project intelligence, reimagined</p>
         </div>
 

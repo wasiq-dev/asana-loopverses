@@ -17,6 +17,7 @@ import Teams from "./pages/Teams";
 import Clients from "./pages/Clients";
 import Activity from "./pages/Activity";
 import Admin from "./pages/Admin";
+import Assistant from "./pages/Assistant";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -42,6 +43,7 @@ const App = () => (
               <Route path="/teams" element={wrap(Teams)} />
               <Route path="/clients" element={wrap(Clients)} />
               <Route path="/activity" element={wrap(Activity)} />
+              <Route path="/assistant" element={wrap(Assistant)} />
               <Route path="/admin" element={wrap(Admin, true)} />
               <Route path="*" element={<NotFound />} />
             </Routes>
