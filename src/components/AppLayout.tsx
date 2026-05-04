@@ -8,6 +8,7 @@ import { Moon, Sun, LogOut, User as UserIcon } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
+import { NotificationBell } from "./NotificationBell";
 
 export function AppLayout({ children }: { children: ReactNode }) {
   const { theme, toggle } = useTheme();
